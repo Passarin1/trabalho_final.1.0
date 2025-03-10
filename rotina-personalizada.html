@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotina Personalizada</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            color: #5A2A83;
+            margin-top: 30px;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-weight: bold;
+            margin: 10px 0;
+            display: block;
+        }
+        select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        button {
+            background-color: #5A2A83;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #4b1a61;
+        }
+        .resultado {
+            display: none;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        .resultado h2 {
+            color: #5A2A83;
+        }
+        .resultado p, .resultado ul {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .resultado ul {
+            padding-left: 20px;
+        }
+        .resultado li {
+            list-style-type: disc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Escolha a sua rotina de cuidados com a pele</h1>
+
+    <div class="container">
+        <!-- Opções de escolha -->
+        <label for="limpeza">Tipo de Limpeza:</label>
+        <select id="limpeza">
+            <option value="simples">Limpeza Simples</option>
+            <option value="completa">Limpeza Completa</option>
+            <option value="intensa">Limpeza Intensa</option>
+        </select>
+
+        <label for="hidratacao">Tipo de Hidratação:</label>
+        <select id="hidratacao">
+            <option value="leve">Hidratação Leve</option>
+            <option value="intensa">Hidratação Intensa</option>
+        </select>
+
+        <label for="pele">Tipo de Pele:</label>
+        <select id="pele">
+            <option value="normal">Pele Normal</option>
+            <option value="oleosa">Pele Oleosa</option>
+            <option value="seca">Pele Seca</option>
+            <option value="mista">Pele Mista</option>
+            <option value="sensivel">Pele Sensível</option>
+        </select>
+
+        <label for="horario">Horário da Rotina:</label>
+        <select id="horario">
+            <option value="diurna">Rotina Diurna</option>
+            <option value="noturna">Rotina Noturna</option>
+        </select>
+
+        <button onclick="exibirResultado()">Ver Resultado</button>
+    </div>
+
+    <div id="resultado" class="resultado">
+        <h2>Rotina Personalizada</h2>
+        <p><strong>Limpeza:</strong> <span id="limpezaSelecionada"></span></p>
+        <p><strong>Hidratação:</strong> <span id="hidratacaoSelecionada"></span></p>
+        <p><strong>Tipo de Pele:</strong> <span id="peleSelecionada"></span></p>
+        <p><strong>Horário da Rotina:</strong> <span id="horarioSelecionado"></span></p>
+        <h4>Passos Detalhados:</h4>
+        <ul id="passosDetalhados"></ul>
+    </div>
+
+    <script>
+        const passos = {
+            "simples": [
+                "Escolher um sabonete facial suave.",
+                "Molhar o rosto com água morna.",
+                "Aplicar o sabonete no rosto.",
+                "Enxaguar com água morna.",
+                "Secar com toalha limpa."
+            ],
+            "completa": [
+                "Usar um sabonete facial.",
+                "Aplicar um tônico adstringente.",
+                "Aplicar o tônico com um algodão.",
+                "Enxaguar.",
+                "Secar e preparar a pele para os próximos cuidados."
+            ],
+            "intensa": [
+                "Usar um óleo de limpeza.",
+                "Massagear o óleo no rosto.",
+                "Usar sabonete facial para uma segunda limpeza.",
+                "Enxaguar bem.",
+                "Secar com toalha limpa."
+            ],
+            "leve": [
+                "Escolher um hidratante oil-free.",
+                "Aplicar uma quantidade pequena de hidratante.",
+                "Massagear suavemente.",
+                "Esperar o hidratante absorver."
+            ],
+            "intensaHidratacao": [
+                "Escolher um hidratante denso e nutritivo.",
+                "Aplicar uma quantidade maior de hidratante.",
+                "Massagear o produto.",
+                "Deixar o produto agir durante a noite."
+            ],
+            "normal": [
+                "Use um sabonete suave e um hidratante leve.",
+                "Limpeza duas vezes ao dia."
+            ],
+            "oleosa": [
+                "Use produtos que ajudem a controlar a oleosidade.",
+                "Escolha hidratantes oil-free."
+            ],
+            "seca": [
+                "Use sabonetes hidratantes.",
+                "Escolha cremes mais espessos e nutritivos."
+            ],
+            "mista": [
+                "Use sabonetes faciais suaves.",
+                "Hidratação balanceada."
+            ],
+            "sensivel": [
+                "Use sabonetes sem fragrâncias.",
+                "Opte por cremes hidratantes suaves."
+            ],
+            "diurna": [
+                "Limpeza suave.",
+                "Hidratação e proteção solar."
+            ],
+            "noturna": [
+                "Limpeza profunda.",
+                "Hidratação intensa."
+            ]
+        };
+
+        function exibirResultado() {
+            // Captura as seleções do usuário
+            const limpeza = document.getElementById("limpeza").value;
+            const hidratacao = document.getElementById("hidratacao").value;
+            const pele = document.getElementById("pele").value;
+            const horario = document.getElementById("horario").value;
+
+            // Exibe as seleções
+            document.getElementById("limpezaSelecionada").textContent = limpeza.charAt(0).toUpperCase() + limpeza.slice(1);
+            document.getElementById("hidratacaoSelecionada").textContent = hidratacao.charAt(0).toUpperCase() + hidratacao.slice(1);
+            document.getElementById("peleSelecionada").textContent = pele.charAt(0).toUpperCase() + pele.slice(1);
+            document.getElementById("horarioSelecionado").textContent = horario.charAt(0).toUpperCase() + horario.slice(1);
+
+            // Exibe os passos detalhados com base nas escolhas
+            const passosDetalhados = document.getElementById("passosDetalhados");
+            passosDetalhados.innerHTML = ""; // Limpa passos anteriores
+
+            let listaPassos = [];
+            listaPassos = listaPassos.concat(passos[limpeza], passos[hidratacao], passos[pele], passos[horario]);
+
+            listaPassos.forEach(passo => {
+                const li = document.createElement("li");
+                li.textContent = passo;
+                passosDetalhados.appendChild(li);
+            });
+
+            // Exibe a seção de resultados
+            document.getElementById("resultado").style.display = "block";
+        }
+    </script>
+</body>
+</html>

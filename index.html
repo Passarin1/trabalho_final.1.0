@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuidados com a Pele - Rotina Personalizada</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <header>
+        <h1>Cuidados com a Pele - Rotina Personalizada</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="rotina-personalizada.html">Minha Rotina</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="home">
+            <h2>Escolha sua Rotina de Cuidados com a Pele</h2>
+            <p>Selecione as opções abaixo para obter uma rotina personalizada, adaptada às suas necessidades de cuidados diários:</p>
+            
+            <form id="routineForm" method="GET" action="rotina-personalizada.html">
+                <label for="limpeza">Rotina de limpeza:</label>
+                <select id="limpeza" name="limpeza" required>
+                    <option value="" disabled selected>Selecione...</option>
+                    <option value="limpeza-simples">Limpeza Simples</option>
+                    <option value="limpeza-completa">Limpeza Completa</option>
+                    <option value="limpeza-intensa">Limpeza Intensa</option>
+                </select>
+                <br><br>
+
+                <label for="hidratacao">Rotina de hidratação:</label>
+                <select id="hidratacao" name="hidratacao" required>
+                    <option value="" disabled selected>Selecione...</option>
+                    <option value="hidratacao-leve">Hidratação Leve</option>
+                    <option value="hidratacao-intensa">Hidratação Intensa</option>
+                </select>
+                <br><br>
+
+                <label for="tipoPele">Tipo de pele:</label>
+                <select id="tipoPele" name="tipoPele" required>
+                    <option value="" disabled selected>Selecione...</option>
+                    <option value="normal">Normal</option>
+                    <option value="oleosa">Oleosa</option>
+                    <option value="seca">Seca</option>
+                    <option value="mista">Mista</option>
+                    <option value="sensivel">Sensível</option>
+                </select>
+                <br><br>
+
+                <label for="rotinaHorario">Horário da rotina:</label>
+                <select id="rotinaHorario" name="rotinaHorario" required>
+                    <option value="" disabled selected>Selecione...</option>
+                    <option value="diurna">Diurna</option>
+                    <option value="noturna">Noturna</option>
+                </select>
+                <br><br>
+                
+                <button type="submit">Ver Minha Rotina</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Cuidados com a Pele. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
