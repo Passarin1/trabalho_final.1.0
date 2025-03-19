@@ -7,6 +7,14 @@ body, h1, h2, h3, p, ul, li, form, select, button {
 }
 
 body {
+    background-image: url('DALL·E 2025-03-19 20.21.25 - A soft and elegant background representing a skincare routine. The image features pastel tones such as light blue, soft pink, and beige, creating a ca.webp'); /* Substitua 'sua-imagem.jpg' pelo caminho da sua imagem */
+    background-size: cover; /* Ajusta a imagem para cobrir toda a tela */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Evita repetição da imagem */
+    background-attachment: fixed; /* Mantém a imagem fixa ao rolar a página */
+}
+
+body {
     background-color: #f8f9fa;
     color: #333;
     text-align: center;
