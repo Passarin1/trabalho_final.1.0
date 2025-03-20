@@ -1,10 +1,16 @@
 # trabalho_final.1.0
+3° infor B
 
 # Cuidados com a Pele - Rotina Personalizada
-Link para o Deploy
+# Link para o Deploy
+luis henrique 
+joão Pedro
+luane 
+mirela 
 
-Visualize o projeto aqui
-vercel: 
+
+# Visualize o projeto aqui
+vercel: https://trabalho-final-1-0.vercel.app/
 
 # Descrição
 Este é um projeto voltado para personalização de rotinas de cuidados com a pele. O site permite que o usuário selecione sua rotina de cuidados baseada em seu tipo de pele e preferências de horários. A partir dessas escolhas, ele recebe uma rotina de cuidados personalizada com dicas e passos detalhados, ajudando a melhorar sua saúde e aparência da pele.
