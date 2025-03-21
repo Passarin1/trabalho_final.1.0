@@ -3,69 +3,221 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cuidados com a Pele - Rotina Personalizada</title>
-    <link rel="stylesheet" href="estilo.css">
+    <title>Cuidados com a Pele - Login</title>
+    <style>
+        /* Estilos Gerais */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #5A2A83;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        form h3 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        form input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #5A2A83;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #4b1a61;
+        }
+
+        form a {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            color: #5A2A83;
+            text-decoration: none;
+        }
+
+        .form-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 20px;
+            color: green;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Cuidados com a Pele - Rotina Personalizada</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="rotina-personalizada.html">Minha Rotina</a></li>
-            </ul>
-        </nav>
+        <h1>Cuidados com a Pele</h1>
     </header>
-    
-    <main>
-        <section id="home">
-            <h2>Escolha sua Rotina de Cuidados com a Pele</h2>
-            <p>Selecione as opções abaixo para obter uma rotina personalizada, adaptada às suas necessidades de cuidados diários:</p>
+
+    <!-- Formulário de Login e Criação de Conta -->
+    <div class="form-container">
+        <!-- Formulário de Login -->
+        <form id="loginForm" style="display: block;">
+            <h3>Entrar</h3>
+            <label for="emailLogin">E-mail:</label>
+            <input type="email" id="emailLogin" name="emailLogin" required placeholder="Digite seu e-mail">
+            <label for="senhaLogin">Senha:</label>
+            <input type="password" id="senhaLogin" name="senhaLogin" required placeholder="Digite sua senha">
+            <button type="submit">Entrar</button>
+            <a href="#" onclick="toggleForm()">Criar Conta</a>
+        </form>
+
+        <!-- Formulário de Criação de Conta -->
+        <form id="signupForm" style="display: none;">
+            <h3>Criar Conta</h3>
+            <label for="emailSignup">E-mail:</label>
+            <input type="email" id="emailSignup" name="emailSignup" required placeholder="Digite seu e-mail">
+            <label for="senhaSignup">Senha:</label>
+            <input type="password" id="senhaSignup" name="senhaSignup" required placeholder="Crie uma senha">
+            <label for="confirmSenha">Confirmar Senha:</label>
+            <input type="password" id="confirmSenha" name="confirmSenha" required placeholder="Confirme sua senha">
+            <button type="submit">Criar Conta</button>
+            <a href="#" onclick="toggleForm()">Já tenho uma conta</a>
+        </form>
+    </div>
+
+    <!-- Mensagem de sucesso ou erro -->
+    <div id="message" class="message" style="display: none;"></div>
+
+    <script>
+        // Função para alternar entre os formulários de login e criação de conta
+        function toggleForm() {
+            const loginForm = document.getElementById("loginForm");
+            const signupForm = document.getElementById("signupForm");
+
+            // Alterna entre os formulários
+            if (loginForm.style.display === "none") {
+                loginForm.style.display = "block";
+                signupForm.style.display = "none";
+            } else {
+                loginForm.style.display = "none";
+                signupForm.style.display = "block";
+            }
+        }
+
+        // Verifica se já há um login salvo
+        window.onload = function() {
+            const savedEmail = localStorage.getItem('email');
+            const savedPassword = localStorage.getItem('senha');
             
-            <form id="routineForm" method="GET" action="rotina-personalizada.html">
-                <label for="limpeza">Rotina de limpeza:</label>
-                <select id="limpeza" name="limpeza" required>
-                    <option value="" disabled selected>Selecione...</option>
-                    <option value="limpeza-simples">Limpeza Simples</option>
-                    <option value="limpeza-completa">Limpeza Completa</option>
-                    <option value="limpeza-intensa">Limpeza Intensa</option>
-                </select>
-                <br><br>
+            if (savedEmail && savedPassword) {
+                document.getElementById('emailLogin').value = savedEmail;
+                document.getElementById('senhaLogin').value = savedPassword;
+            }
+        };
 
-                <label for="hidratacao">Rotina de hidratação:</label>
-                <select id="hidratacao" name="hidratacao" required>
-                    <option value="" disabled selected>Selecione...</option>
-                    <option value="hidratacao-leve">Hidratação Leve</option>
-                    <option value="hidratacao-intensa">Hidratação Intensa</option>
-                </select>
-                <br><br>
+        // Lógica de Login (submissão do formulário)
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const email = document.getElementById("emailLogin").value;
+            const senha = document.getElementById("senhaLogin").value;
 
-                <label for="tipoPele">Tipo de pele:</label>
-                <select id="tipoPele" name="tipoPele" required>
-                    <option value="" disabled selected>Selecione...</option>
-                    <option value="normal">Normal</option>
-                    <option value="oleosa">Oleosa</option>
-                    <option value="seca">Seca</option>
-                    <option value="mista">Mista</option>
-                    <option value="sensivel">Sensível</option>
-                </select>
-                <br><br>
+            // Recupera os usuários do localStorage ou cria uma lista vazia se não houver
+            const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
 
-                <label for="rotinaHorario">Horário da rotina:</label>
-                <select id="rotinaHorario" name="rotinaHorario" required>
-                    <option value="" disabled selected>Selecione...</option>
-                    <option value="diurna">Diurna</option>
-                    <option value="noturna">Noturna</option>
-                </select>
-                <br><br>
-                
-                <button type="submit">Ver Minha Rotina</button>
-            </form>
-        </section>
-    </main>
+            // Verifica se o e-mail e a senha correspondem
+            const usuarioEncontrado = usuarios.find(usuario => usuario.email === email && usuario.senha === senha);
 
-    <footer>
-        <p>&copy; 2024 Cuidados com a Pele. Todos os direitos reservados.</p>
-    </footer>
+            const messageDiv = document.getElementById("message");
+
+            if (usuarioEncontrado) {
+                messageDiv.style.color = "green";
+                messageDiv.textContent = "Login bem-sucedido! Redirecionando...";
+                messageDiv.style.display = "block";
+
+                // Salva o login e senha no localStorage
+                localStorage.setItem('email', email);
+                localStorage.setItem('senha', senha);
+
+                setTimeout(() => {
+                    window.location.href = 'parte1.html'; // Redireciona após login
+                }, 2000);
+            } else {
+                messageDiv.style.color = "red";
+                messageDiv.textContent = "Erro ao fazer login: Usuário ou senha incorretos.";
+                messageDiv.style.display = "block";
+            }
+        });
+
+        // Lógica de Criação de Conta (submissão do formulário)
+        document.getElementById("signupForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const email = document.getElementById("emailSignup").value;
+            const senha = document.getElementById("senhaSignup").value;
+            const confirmSenha = document.getElementById("confirmSenha").value;
+
+            // Verifica se as senhas coincidem
+            if (senha !== confirmSenha) {
+                alert("As senhas não coincidem!");
+                return;
+            }
+
+            // Recupera os usuários existentes do localStorage
+            const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+            // Verifica se o e-mail já está cadastrado
+            const usuarioExistente = usuarios.find(usuario => usuario.email === email);
+            if (usuarioExistente) {
+                alert("Este e-mail já está cadastrado.");
+                return;
+            }
+
+            // Adiciona o novo usuário
+            usuarios.push({ email, senha });
+            
+            // Salva a lista de usuários no localStorage
+            localStorage.setItem('usuarios', JSON.stringify(usuarios));
+
+            const messageDiv = document.getElementById("message");
+            messageDiv.style.color = "green";
+            messageDiv.textContent = "Conta criada com sucesso! Agora, faça login.";
+            messageDiv.style.display = "block";
+
+            // Alterna para o formulário de login após o sucesso
+            setTimeout(() => {
+                toggleForm(); 
+            }, 2000);
+        });
+    </script>
 </body>
 </html>

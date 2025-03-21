@@ -19,6 +19,28 @@
             color: #000000;
             margin-top: 30px;
         }
+
+        nav ul {
+            text-align: center;
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #5A2A83;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            color: #4b1a61;
+        }
+
         .container {
             width: 80%;
             margin: 20px auto;
@@ -27,11 +49,13 @@
             border-radius: 8px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
         }
+
         label {
             font-weight: bold;
             margin: 10px 0;
             display: block;
         }
+
         select, button {
             width: 100%;
             padding: 10px;
@@ -40,14 +64,17 @@
             border: 1px solid #ccc;
             font-size: 16px;
         }
+
         button {
             background-color: #5A2A83;
             color: white;
             cursor: pointer;
         }
+
         button:hover {
             background-color: #4b1a61;
         }
+
         .resultado {
             display: none;
             background-color: #fff;
@@ -56,32 +83,43 @@
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             margin-top: 20px;
         }
+
         .resultado h2 {
             color: #5A2A83;
         }
+
         .resultado p, .resultado ul {
             font-size: 16px;
             line-height: 1.6;
         }
+
         .resultado ul {
             padding-left: 20px;
         }
+
         .resultado li {
             list-style-type: disc;
         }
 
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #f1f1f1;
+            margin-top: 30px;
+        }
     </style>
 </head>
-<header>
-    <h1>Cuidados com a Pele - Rotina Personalizada</h1>
-    <nav>
-        <ul>
-            <li><a href="index.html">Início</a></li>
-            <li><a href="rotina-personalizada.html">Minha Rotina</a></li>
-        </ul>
-    </nav>
-</header>
 <body>
+    <header>
+        <h1>Cuidados com a Pele - Rotina Personalizada</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="rotina-personalizada.html">Minha Rotina</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <h1>Escolha a sua rotina de cuidados com a pele</h1>
 
     <div class="container">
@@ -127,6 +165,10 @@
         <h4>Dicas Especiais:</h4>
         <p id="dicasExtras"></p>
     </div>
+
+    <footer>
+        <p>&copy; 2024 Cuidados com a Pele. Todos os direitos reservados.</p>
+    </footer>
 
     <script>
         const dicas = {
