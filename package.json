@@ -3,11 +3,13 @@
   "version": "1.0.0",
   "description": "3° infor B",
   "main": "script.js",
- "scripts": {
-  "start": "node index.js",
-  "dev": "nodemon index.js"
-},
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
 }
