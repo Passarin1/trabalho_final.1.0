@@ -100,8 +100,9 @@
             <input type="email" id="emailLogin" name="emailLogin" required placeholder="Digite seu e-mail">
             <label for="senhaLogin">Senha:</label>
             <input type="password" id="senhaLogin" name="senhaLogin" required placeholder="Digite sua senha">
-            <button type="submit">Entrar</button>
+            <button id="entraUsuario" type="submit">Entrar</button>
             <a href="#" onclick="toggleForm()">Criar Conta</a>
+            <span id="msg"></span>
         </form>
 
         <!-- Formulário de Criação de Conta -->
@@ -228,7 +229,7 @@
         botaoSalvar.addEventListener('click', inserirUsuario);
 
         const url = "https://trabalho-final-front-end-lilac.vercel.app/usuario";
-       
+
         async function inserirUsuario(e) {
             e.preventDefault();
             try {
@@ -259,6 +260,65 @@
                 alert("Usuário não inserido");
             }
         }
+    </script>
+
+    <script>
+        // Seleciona o botão de login pelo ID e adiciona um evento de clique para chamar a função autenticar
+        const botaoLogin = document.querySelector('#entraUsuario');
+        botaoLogin.addEventListener('click', autenticar);
+
+        // Seleciona a área onde as mensagens de status serão exibidas
+        const areaMensagem = document.getElementById('msg');
+
+        // Função assíncrona responsável por autenticar o usuário
+        async function autenticar(e) {
+            // Impede que o formulário recarregue a página ao enviar os dados
+            e.preventDefault();
+
+            // Exibe uma mensagem temporária informando que a requisição está em andamento
+            document.getElementById('msg').innerText = "Aguarde... ";
+
+            // Coleta os valores digitados nos campos de email e senha
+            const dados = {
+                email: document.getElementById('emailLogin').value,
+                senha: document.getElementById('senhaLogin').value
+            };
+
+            // Define a URL da API que processará a autenticação
+            const url = "https://literate-spoon-g4xw5j975vq72gww-3000.app.github.dev/login";
+
+            try {
+                // Envia uma requisição HTTP POST para a API com os dados do usuário
+                const response = await fetch(url, {
+                    method: 'POST', // Define o método HTTP como POST para envio de dados
+                    headers: {
+                        'Content-Type': 'application/json' // Define que o conteúdo enviado será em formato JSON
+                    },
+                    body: JSON.stringify(dados) // Converte o objeto "dados" para JSON antes de enviar
+                });
+
+                // Se a resposta da API não for bem-sucedida, lança um erro
+                if (!response.ok) {
+                    throw new Error("Email/Senha incorretos! - " + response.status);
+                }
+
+                // Converte a resposta da API para JSON
+                const data = await response.json();
+
+                // Armazena o token JWT no localStorage para manter a sessão do usuário
+                localStorage.setItem('jwt', data.token);
+
+                // Exibe uma mensagem de sucesso na interface do usuário em verde juntamente com o Token gerado
+                window.location.href = 'parte1.html';
+
+            } catch (error) {
+                // Exibe uma mensagem de erro na interface do usuário em vermelho
+                areaMensagem.style = "color:red";
+                areaMensagem.innerHTML = error;
+            }
+        }
+
+
     </script>
 </body>
 
