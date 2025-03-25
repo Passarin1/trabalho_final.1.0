@@ -2,23 +2,24 @@
 3° infor B
 
 # Cuidados com a Pele - Rotina Personalizada
-# Link para o Deploy
-luis henrique 
-joão Pedro
-luane 
-mirela 
 
+## Link para o Deploy
+[https://trabalho-final-1-0.vercel.app/](https://trabalho-final-1-0.vercel.app/)
 
-# Visualize o projeto aqui
-vercel: https://trabalho-final-1-0.vercel.app/
+## Descrição
+Este projeto é voltado para a personalização de rotinas de cuidados com a pele. Ele permite que os usuários escolham suas preferências de cuidados diários, como tipo de limpeza, hidratação, tipo de pele e horário. Com base nessas escolhas, o sistema gera uma rotina personalizada com dicas e passos detalhados para melhorar a saúde e aparência da pele.
 
-# Descrição
-Este é um projeto voltado para personalização de rotinas de cuidados com a pele. O site permite que o usuário selecione sua rotina de cuidados baseada em seu tipo de pele e preferências de horários. A partir dessas escolhas, ele recebe uma rotina de cuidados personalizada com dicas e passos detalhados, ajudando a melhorar sua saúde e aparência da pele.
+O design é responsivo, intuitivo e acessível para usuários de todas as idades.
 
-O design do site é limpo, minimalista e intuitivo, com uma interface amigável para usuários de todas as idades.
+## Principais Funcionalidades
+- **Seleção da Rotina**: O usuário pode escolher entre diferentes opções de limpeza, hidratação, tipo de pele e horário preferido (diurno ou noturno).
+- **Exibição de Resultados**: Após preencher o formulário, o site exibe uma rotina personalizada de cuidados com a pele, incluindo dicas especiais.
+- **Passos Detalhados**: O site fornece uma lista com os passos detalhados para realizar a rotina de cuidados.
+- **Design Responsivo**: Funciona bem em dispositivos móveis e desktops.
 
-# Principais Funcionalidades
-Seleção da Rotina: O usuário escolhe entre diferentes opções de limpeza e hidratação, além de indicar seu tipo de pele e horário preferido (diurno ou noturno).
-Exibição de Resultados: Após preencher o formulário, o site exibe uma rotina personalizada de cuidados com a pele, incluindo dicas especiais de acordo com o tipo de pele.
-Passos Detalhados: O site fornece uma lista com os passos detalhados para realizar a rotina de cuidados.
-Design Responsivo: O site é responsivo e funciona bem tanto em dispositivos móveis quanto em desktop.
+## Equipe
+- Luis Henrique
+- Gabriel
+- João Pedro
+- Luane
+- Mirela
