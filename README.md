@@ -24,3 +24,5 @@ O design é responsivo, intuitivo e acessível para usuários de todas as idades
 - João Pedro
 - Luane
 - Mirela
+-samuel 
+-Isabelly 
