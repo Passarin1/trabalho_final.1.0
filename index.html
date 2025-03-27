@@ -228,7 +228,7 @@
         const botaoSalvar = document.getElementById('novousuario');
         botaoSalvar.addEventListener('click', inserirUsuario);
 
-        const url = "https://trabalho-final-front-end-lilac.vercel.app/usuario";
+        const url = "https://trabalho-final-1-0.vercel.app/usuario"; // Corrigida a barra extra
 
         async function inserirUsuario(e) {
             e.preventDefault();
@@ -247,7 +247,13 @@
                 });
 
                 if (!response.ok) {
-                    throw new Error("Erro na requisição: " + response.status);
+                    if (response.status === 400) {
+                        throw new Error("Requisição inválida. Verifique os dados enviados.");
+                    } else if (response.status === 500) {
+                        throw new Error("Erro interno do servidor. Tente novamente mais tarde.");
+                    } else {
+                        throw new Error(`Erro na requisição: ${response.status}`);
+                    }
                 }
 
                 const data = await response.json();
@@ -257,7 +263,7 @@
 
             } catch (error) {
                 console.error("Erro:", error);
-                alert("Usuário não inserido");
+                alert(`Erro ao inserir usuário: ${error.message}`);
             }
         }
     </script>
@@ -299,7 +305,11 @@
 
                 // Se a resposta da API não for bem-sucedida, lança um erro
                 if (!response.ok) {
-                    throw new Error("Email/Senha incorretos! - " + response.status);
+                    if (response.status === 500) {
+                        throw new Error("Erro interno do servidor. Tente novamente mais tarde.");
+                    } else {
+                        throw new Error("Email/Senha incorretos! - " + response.status);
+                    }
                 }
 
                 // Converte a resposta da API para JSON
@@ -314,11 +324,9 @@
             } catch (error) {
                 // Exibe uma mensagem de erro na interface do usuário em vermelho
                 areaMensagem.style = "color:red";
-                areaMensagem.innerHTML = error;
+                areaMensagem.innerHTML = error.message; // Exibe apenas a mensagem do erro
             }
         }
-
-
     </script>
 </body>
 

@@ -1,9 +1,8 @@
-
-import cors from "cors";
-import dotenv from "dotenv";
-import express from "express";
-import roteadorLogin from "./routes/login.js";
-import roteadorUsuario from "./routes/usuarios.js";
+const cors = require("cors");
+const dotenv = require("dotenv");
+const express = require("express");
+const roteadorLogin = require("./routes/login.js");
+const roteadorUsuario = require("./routes/usuarios.js");
 
 dotenv.config();
 
